@@ -1,0 +1,9 @@
+/*分页*/
+.page {padding: 15px 20px;text-align: right;color: #ccc;}
+.page a {display: inline-block;color: #858585;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;vertical-align: middle;border:1px solid #e3e3e3;}
+.page a:hover {text-decoration: none;color: #fff;background:#ea1e1f;border:1px solid #ea1e1f;}
+.page span.current {display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;color: #fff;background-color:#ea1e1f;vertical-align: middle;border:1px solid #ea1e1f;}
+.page_true{height: 25px;line-height: 25px;padding: 0 5px;margin: 0 2px;vertical-align: middle;background:#aaa;color:#fff;}
+.page_msg{display:inline-block;height:25px;line-height:25px;color:#ababab;margin-left:20px;vertical-align: middle;}
+.skip_inter{height: 25px;width:46px;line-height: 25px;padding: 0 5px;margin: 0 2px;vertical-align: middle;text-align:center;color:#b6b6b6;border:1px solid #e3e3e3;}
+.page span.disabled {display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;color: #ccc;border-radius: 4px;vertical-align: middle;}

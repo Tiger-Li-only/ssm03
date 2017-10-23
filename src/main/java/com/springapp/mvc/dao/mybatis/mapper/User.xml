@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springapp.mvc.dao.IUserDao" >
+
+    <sql id="inc_whereClause" >
+        <where>
+            <if test="userId!=null">
+                and user_id = #{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                and user_name = #{userName}
+            </if>
+            <if test="age!=null">
+                and age = #{age}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="createUser">
+        INSERT INTO t_user(user_name, password, age) VALUES (#{userName, jdbcType=VARCHAR},#{password, jdbcType=VARCHAR}, #{age, jdbcType=INTEGER})
+    </insert>
+
+    <delete id="deleteUser">
+        DELETE FROM t_user
+        <include refid="inc_whereClause"/>
+    </delete>
+
+    <delete id="batchDeleteUser" >
+        DELETE FROM t_user
+        where user_id in
+        <foreach collection="list" item="userId" open="(" close=")" separator=",">
+            #{userId}
+        </foreach>
+    </delete>
+
+    <update id="updateUser">
+        UPDATE t_user
+        <set>
+            <if test="userName!=null">
+                user_name = #{userName, jdbcType=VARCHAR},
+            </if>
+            <if test="age!=null">
+                age = #{age, jdbcType=INTEGER},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+    <select id="findUserByParams" resultType="com.springapp.mvc.model.User">
+        SELECT user_id as userId, user_name as userName, age as age
+        from t_user
+        <include refid="inc_whereClause"/>
+    </select>
+
+    <select id="getUserByParam" resultType="com.springapp.mvc.model.User">
+        select user_id as userId, user_name as userName, age as age
+        from t_user
+        <include refid="inc_whereClause"/>
+    </select>
+
+</mapper>
